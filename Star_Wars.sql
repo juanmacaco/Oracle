@@ -169,6 +169,7 @@ INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Hutt', 'Criat
 INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Togruta', 'Humanoides con grandes montrals y piel colorida.', 95);
 INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Mon Calamari', 'Amfibios inteligentes de Mon Cala, conocidos por su destreza en la navegación.', 80);
 INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Ewok', 'Criaturas pequeñas y peludas de Endor, muy ingeniosas.', 60);
+INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Desconocido', 'Especie no identificada o de origen desconocido en la galaxia.', NULL);
 
 SELECT * FROM ESPECIE;
 
@@ -182,6 +183,8 @@ INSERT INTO ORGANIZACION (ORGANIZACION, DESCRIPCION, TIPO, FUNDACION, BASE_OPERA
 INSERT INTO ORGANIZACION (ORGANIZACION, DESCRIPCION, TIPO, FUNDACION, BASE_OPERACION) VALUES ('Confederación de Sistemas Independientes', 'Alianza separatista contra la República.', 'Militar', '24 ABY', 'Geonosis');
 INSERT INTO ORGANIZACION (ORGANIZACION, DESCRIPCION, TIPO, FUNDACION, BASE_OPERACION) VALUES ('Primera Orden', 'Régimen sucesor del Imperio Galáctico.', 'Militar', 'Desconocida', 'Starkiller Base');
 INSERT INTO ORGANIZACION (ORGANIZACION, DESCRIPCION, TIPO, FUNDACION, BASE_OPERACION) VALUES ('Nueva República', 'Gobierno democrático sucesor de la Alianza Rebelde.', 'Gubernamental', '5 DBY', 'Hosnian Prime');
+INSERT INTO ORGANIZACION (ORGANIZACION, DESCRIPCION, TIPO, FUNDACION, BASE_OPERACION) VALUES ('República Galáctica', 'Gobierno central de la galaxia que promueve la democracia y la paz, formado por múltiples sistemas estelares y planetas.', 'Gubernamental', '25,000 ABY', 'Coruscant');
+INSERT INTO ORGANIZACION (ORGANIZACION, DESCRIPCION, TIPO, FUNDACION, BASE_OPERACION) VALUES ('Resistencia', 'Movimiento militar dedicado a combatir la Primera Orden y restaurar la libertad en la galaxia.', 'Militar', '34 DBY', 'Base Ilium');
 
 SELECT * FROM ORGANIZACION;
 
@@ -242,7 +245,11 @@ INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS,
 INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector de la Cosa', 'Una región remota y peligrosa de la galaxia, conocida por sus rutas de contrabando y la presencia de varios sistemas deshabitados.', 'X:450 Y:300', 10, 'Consorcio de la Cosa');
 INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector Mid Rim', 'Una vasta región que conecta el Núcleo con el Borde Exterior, hogar de varios planetas comerciales y militares.', 'X:200 Y:150', 150, 'Alianza del Mid Rim');
 INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector Corelliano', 'Región famosa por sus constructores de naves y su independencia, hogar de los Corellianos y su cultura única.', 'X:75 Y:30', 80, 'Administración Corelliana');
-INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Borde Exterior', 'Zona más alejada de la galaxia, hogar de contrabandistas, piratas y forajidos, con varios planetas desolados y sin ley.', 'X:300 Y:500', 300, 'Sin gobernante fijo');
+INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Desconocido', 'Sector galáctico no identificado o no registrado en los archivos galácticos.', 'x: Desconocido, y: Desconocido', NULL, 'Desconocido');
+INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector de Stewjon', 'Sector galáctico que alberga el planeta Stewjon, conocido por ser el planeta de origen de Obi-Wan Kenobi.', 'x: 3456, y: 7890', null, 'Desconocido');
+INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector Quelii', 'Sector galáctico poco explorado, conocido por sus recursos naturales y su relativa neutralidad en conflictos galácticos.', 'x: 6789, y: 1234', 4, 'Desconocido');
+INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sistema de Najra', 'Sistema estelar conocido por sus planetas ricos en minerales y su importancia en la industria minera galáctica.', 'x: 7890, y: 3456', 6, 'Desconocido');
+INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sistema de Dagobah', 'Sistema remoto y poco explorado, conocido por albergar el planeta Dagobah, un mundo pantanoso y rico en la Fuerza.', 'x: 1234, y: 5678', 1, 'Desconocido');
 
 
 SELECT * FROM SECTOR_GALACTICO;
@@ -286,16 +293,34 @@ INSERT INTO MATERIAL (MATERIAL, DESCRIPCION, PROPIEDADES, USOS, RAREZA) VALUES (
 
 SELECT * FROM MATERIAL;
 
-INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Tatooine', 'Un desértico planeta árido, hogar de los Jedi y Sith.', 'Desértico', 200000, 'Borde Exterior', 'Habitable');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Tatooine', 'Un desértico planeta árido, hogar de los Jedi y Sith.', 'Desértico', 200000, 'Sector Arkanis', 'Habitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Coruscant', 'El centro de la política galáctica, un planeta urbano con una megaciudad que lo cubre todo.', 'Templado', 1000000000, 'Sector Coruscant', 'Habitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Hoth', 'Planeta helado y frío, conocido por ser la base de la Rebelión.', 'Polar', 2000, 'Sector de la Cosa', 'Habitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Endor', 'Planeta boscoso, hogar de los Ewoks y con lunas con bosques densos.', 'Boscoso', 3000, 'Sector de la Cosa', 'Habitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Naboo', 'Planeta de paisajes hermosos, agua, llanuras y hermosos jardines.', 'Tropical', 1000000, 'Sector Mid Rim', 'Habitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Mustafar', 'Un planeta volcánico que alberga grandes cantidades de lava, hogar de la fábrica de droides.', 'Volcánico', 5000, 'Sector de la Cosa', 'Inhabitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Alderaan', 'Un hermoso planeta destruido por la Estrella de la Muerte, conocido por su cultura y arte.', 'Templado', 2000000, 'Sector Corelliano', 'Habitable');
-INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Dagobah', 'Un planeta pantanoso y oscuro, famoso por ser el retiro de Yoda.', 'Pantano', 0, 'Borde Exterior', 'Inhabitable');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Dagobah', 'Un planeta pantanoso y oscuro, famoso por ser el retiro de Yoda.', 'Pantano', 0, 'Sistema de Dagobah', 'Inhabitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Kashyyyk', 'El hogar de los Wookiees, cubierto de vastos bosques y árboles gigantes.', 'Tropical', 5000000, 'Sector Mid Rim', 'Habitable');
-INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Jakku', 'Planeta desértico donde se encuentra el "Cruzado" y el "Halcon Milenario".', 'Desértico', 10000, 'Borde Exterior', 'Habitable');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Jakku', 'Planeta desértico donde se encuentra el "Cruzado" y el "Halcon Milenario".', 'Desértico', 10000, 'Sistema de Najra', 'Habitable');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Corellia', 'Planeta natal de Han Solo y conocido por su industria de construcción de naves espaciales.', 'Templado', 15000000000, 'Sector Corelliano', 'Habitable');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Desconocido', 'Planeta de origen no identificado o no registrado en los archivos galácticos.', 'Desconocido', NULL, 'Desconocido', 'Desconocido');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Stewjon', 'Planeta de origen de Obi-Wan Kenobi, con una cultura y geografía poco exploradas en los registros galácticos.', 'Templado', null, 'Sector de Stewjon', 'Habitable');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Dathomir', 'Planeta remoto y peligroso, hogar de las Hermanas de la Noche y los Zabrak. Conocido por su conexión con el lado oscuro de la Fuerza.', 'Árido y tormentoso', 1000000, 'Sector Quelii', 'Habitable');
 
-select * from planeta;
+select * from PLANETA;
 
+
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Luke Skywalker', 'Humano', 'Tatooine', 'Alianza Rebelde', 'Maestro', 'Masculino', 53, 9, 'Leia Organa, Han Solo', 'Darth Vader, Emperador Palpatine', '19 ABY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Darth Vader', 'Humano', 'Tatooine', 'Imperio Galáctico', 'Lord', 'Masculino', 45, 10, 'Emperador Palpatine', 'Luke Skywalker, Alianza Rebelde', '41 ABY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Leia Organa', 'Humano', 'Alderaan', 'Alianza Rebelde', 'General', 'Femenino', 53, 7, 'Luke Skywalker, Han Solo', 'Darth Vader, Emperador Palpatine', '19 ABY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Han Solo', 'Humano', 'Corellia', 'Alianza Rebelde', 'General', 'Masculino', 55, 6, 'Luke Skywalker, Leia Organa', 'Darth Vader, Emperador Palpatine', '29 ABY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Yoda', 'Desconocido', 'Desconocido', 'Orden Jedi', 'Maestro', 'Masculino', 900, 10, 'Luke Skywalker, Obi-Wan Kenobi', 'Darth Sidious, Darth Vader', '896 ABY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Obi-Wan Kenobi', 'Humano', 'Stewjon', 'Orden Jedi', 'Maestro', 'Masculino', 57, 9, 'Luke Skywalker, Yoda', 'Darth Vader, Darth Maul', '57 ABY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Padmé Amidala', 'Humano', 'Naboo', 'República Galáctica', 'General', 'Femenino', 27, 5, 'Anakin Skywalker, Obi-Wan Kenobi', 'Darth Sidious, Conde Dooku', '46 ABY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Chewbacca', 'Wookiee', 'Kashyyyk', 'Alianza Rebelde', 'Soldado', 'Masculino', 234, 8, 'Han Solo, Luke Skywalker', 'Imperio Galáctico', '200 ABY', 'Vivo');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Darth Maul', 'Zabrak', 'Dathomir', 'Sith', 'Aprendiz', 'Masculino', 50, 8, 'Darth Sidious', 'Obi-Wan Kenobi, Qui-Gon Jinn', '54 ABY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Rey', 'Humano', 'Jakku', 'Resistencia', 'Aprendiz', 'Femenino', 25, 8, 'Finn, Poe Dameron', 'Kylo Ren, Snoke', '15 DBY', 'Vivo');
+
+
+SELECT * FROM PERSONAJE;
