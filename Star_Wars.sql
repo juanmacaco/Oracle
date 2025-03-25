@@ -352,21 +352,22 @@ INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VA
 
 select * from PLANETA;
 
-INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Luke Skywalker', 'Humano', 'Tatooine', 'Alianza Rebelde', 'Maestro', 'Masculino', 53, 9, 'Leia Organa, Han Solo', 'Darth Vader, Emperador Palpatine', '19 ABY', 'Muerto');
-INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Darth Vader', 'Humano', 'Tatooine', 'Imperio Galáctico', 'Lord', 'Masculino', 45, 10, 'Emperador Palpatine', 'Luke Skywalker, Alianza Rebelde', '41 ABY', 'Muerto');
-INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Leia Organa', 'Humano', 'Alderaan', 'Alianza Rebelde', 'General', 'Femenino', 53, 7, 'Luke Skywalker, Han Solo', 'Darth Vader, Emperador Palpatine', '19 ABY', 'Muerto');
-INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Han Solo', 'Humano', 'Corellia', 'Alianza Rebelde', 'General', 'Masculino', 55, 6, 'Luke Skywalker, Leia Organa', 'Darth Vader, Emperador Palpatine', '29 ABY', 'Muerto');
-INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Yoda', 'Desconocido', 'Desconocido', 'Orden Jedi', 'Maestro', 'Masculino', 900, 10, 'Luke Skywalker, Obi-Wan Kenobi', 'Darth Sidious, Darth Vader', '896 ABY', 'Muerto');
-INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Obi-Wan Kenobi', 'Humano', 'Stewjon', 'Orden Jedi', 'Maestro', 'Masculino', 57, 9, 'Luke Skywalker, Yoda', 'Darth Vader, Darth Maul', '57 ABY', 'Muerto');
-INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Padmé Amidala', 'Humano', 'Naboo', 'República Galáctica', 'General', 'Femenino', 27, 5, 'Anakin Skywalker, Obi-Wan Kenobi', 'Darth Sidious, Conde Dooku', '46 ABY', 'Muerto');
-INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Chewbacca', 'Wookiee', 'Kashyyyk', 'Alianza Rebelde', 'Soldado', 'Masculino', 234, 8, 'Han Solo, Luke Skywalker', 'Imperio Galáctico', '200 ABY', 'Vivo');
-INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Darth Maul', 'Zabrak', 'Dathomir', 'Sith', 'Aprendiz', 'Masculino', 50, 8, 'Darth Sidious', 'Obi-Wan Kenobi, Qui-Gon Jinn', '54 ABY', 'Muerto');
-INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Rey', 'Humano', 'Jakku', 'Resistencia', 'Aprendiz', 'Femenino', 25, 8, 'Finn, Poe Dameron', 'Kylo Ren, Snoke', '15 DBY', 'Vivo');
-INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Poe Dameron', 'Humano', 'Yavin 4', 'Resistencia', 'General', 'Masculino', 32, 8, 'Finn, Rey, BB-8', 'Primera Orden', '26 ABY', 'Vivo');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Luke Skywalker', 'Humano', 'Tatooine', 'Alianza Rebelde', 'Maestro', 'Masculino', 53, 9, 'Leia Organa, Han Solo', 'Darth Vader, Emperador Palpatine', '19 BBY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Darth Vader', 'Humano', 'Tatooine', 'Imperio Galáctico', 'Lord', 'Masculino', 45, 10, 'Emperador Palpatine', 'Luke Skywalker, Alianza Rebelde', '41 BBY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Leia Organa', 'Humano', 'Alderaan', 'Alianza Rebelde', 'General', 'Femenino', 53, 7, 'Luke Skywalker, Han Solo', 'Darth Vader, Emperador Palpatine', '19 BBY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Han Solo', 'Humano', 'Corellia', 'Alianza Rebelde', 'General', 'Masculino', 55, 6, 'Luke Skywalker, Leia Organa', 'Darth Vader, Emperador Palpatine', '29 BBY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Yoda', 'Desconocido', 'Desconocido', 'Orden Jedi', 'Maestro', 'Masculino', 900, 10, 'Luke Skywalker, Obi-Wan Kenobi', 'Darth Sidious, Darth Vader', '896 BBY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Obi-Wan Kenobi', 'Humano', 'Stewjon', 'Orden Jedi', 'Maestro', 'Masculino', 57, 9, 'Luke Skywalker, Yoda', 'Darth Vader, Darth Maul', '57 BBY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Padmé Amidala', 'Humano', 'Naboo', 'República Galáctica', 'General', 'Femenino', 27, 5, 'Anakin Skywalker, Obi-Wan Kenobi', 'Darth Sidious, Conde Dooku', '46 BBY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Chewbacca', 'Wookiee', 'Kashyyyk', 'Alianza Rebelde', 'Soldado', 'Masculino', 234, 8, 'Han Solo, Luke Skywalker', 'Imperio Galáctico', '200 BBY', 'Vivo');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Darth Maul', 'Zabrak', 'Dathomir', 'Sith', 'Aprendiz', 'Masculino', 50, 8, 'Darth Sidious', 'Obi-Wan Kenobi, Qui-Gon Jinn', '54 BBY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Rey', 'Humano', 'Jakku', 'Resistencia', 'Aprendiz', 'Femenino', 25, 8, 'Finn, Poe Dameron', 'Kylo Ren, Snoke', '15 ABY', 'Vivo');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Poe Dameron', 'Humano', 'Yavin 4', 'Resistencia', 'General', 'Masculino', 32, 8, 'Finn, Rey, BB-8', 'Primera Orden', '2 ABY', 'Vivo');
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Jabba el Hutt', 'Hutt', 'Tatooine', 'Clan Hutt', 'Lord', 'Masculino', 600, 7, 'Bib Fortuna, Boba Fett', 'Luke Skywalker, Han Solo, Leia Organa', '600 BBY', 'Muerto');
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Darth Revan', 'Humano', 'Taris', 'Orden Jedi', 'Lord', 'Masculino', 35, 10, 'Bastila Shan, Carth Onasi', 'Malak, Sith', '3996 BBY', 'Desconocido');
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Meetra Surik', 'Humano', 'Desconocido', 'Sith', 'Aprendiz', 'Femenino', 30, 9, 'HK-47, T3-M4', 'Darth Nihilus, Darth Sion', '3956 BBY', 'Desconocido');
 
+DELETE FROM PERSONAJE;
 select * from planeta;
 select * from especie;
 select * from organizacion;
@@ -397,6 +398,7 @@ INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, 
 INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('HK-47', 'De combate', 'HK-series', 'Czerka Corporation', 'Droide asesino con gran habilidad para el combate y el sigilo', 'Darth Revan', '3960 ABY');
 INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('T3-M4', 'Astromecánico', 'T3-series', 'Duwani Mechanical Products', 'Droide astromecánico con habilidades de hackeo y reparación', 'Meetra Surik', '3956 ABY');
 
+DELETE FROM DROIDE;
 SELECT * FROM Droide;
 
 INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Bantha', 'Gran animal herbívoro, utilizado por los habitantes de Tatooine como montura. Su cuerpo masivo es cubierto de pelaje y tiene grandes cuernos.', 'Tatooine', 50);
@@ -411,3 +413,39 @@ INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Lo
 INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Blurrg', 'Reptil de gran tamaño que habita en el planeta Sorgan. Usado como montura por los caza recompensas en su búsqueda de presas.', 'Endor', 30);
 
 select * from raza;
+--1 Ordeno los personajes por los planetas de origen
+SELECT PLANETA_DE_ORIGEN, COUNT(*)
+AS PLANETAS 
+FROM PERSONAJE 
+GROUP BY PLANETA_DE_ORIGEN 
+ORDER BY PLANETAS DESC, PLANETA_DE_ORIGEN ASC;
+
+--2
+SELECT ESPECIE || ', ' || PERSONAJE || ' pertenece a ' || AFILIACION AS TEXTO
+FROM PERSONAJE;
+
+--3
+SELECT CLASE, SUM(VELOCIDAD) AS TOTAL_VELOCIDAD
+FROM NAVE
+GROUP BY CLASE
+ORDER BY TOTAL_VELOCIDAD DESC;
+
+--4
+SELECT PERSONAJE, FECHA_DE_NACIMIENTO
+FROM PERSONAJE
+WHERE FECHA_DE_NACIMIENTO
+LIKE '%BBY';
+
+--5 
+SELECT PERSONAJE, ESPECIE, ALIADOS, ESTADO
+FROM PERSONAJE;
+
+--6
+SELECT PERSONAJE, 
+       LENGTH(PERSONAJE) - LENGTH(REPLACE(LOWER(PERSONAJE), 'a', '')) +
+       LENGTH(PERSONAJE) - LENGTH(REPLACE(LOWER(PERSONAJE), 'e', '')) +
+       LENGTH(PERSONAJE) - LENGTH(REPLACE(LOWER(PERSONAJE), 'i', '')) +
+       LENGTH(PERSONAJE) - LENGTH(REPLACE(LOWER(PERSONAJE), 'o', '')) +
+       LENGTH(PERSONAJE) - LENGTH(REPLACE(LOWER(PERSONAJE), 'u', '')) AS cantidad_vocales
+FROM PERSONAJE
+ORDER BY CANTIDAD_VOCALES DESC;
