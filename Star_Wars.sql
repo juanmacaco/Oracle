@@ -1,3 +1,4 @@
+
 DROP TABLE PERSONAJE CASCADE CONSTRAINTS; --
 DROP TABLE ESPECIE CASCADE CONSTRAINTS; --
 DROP TABLE PLANETA CASCADE CONSTRAINTS; --
@@ -33,11 +34,15 @@ CREATE TABLE PERSONAJE (
     FOREIGN KEY (AFILIACION) REFERENCES ORGANIZACION(ORGANIZACION)
 );
 
+SELECT * FROM PERSONAJE;
+
 CREATE TABLE ESPECIE ( --AAAAAAAAAA
     ESPECIE VARCHAR2(50) PRIMARY KEY,
     DESCRIPCION VARCHAR2(255),
     PROMEDIO_VIDA NUMBER
 );
+
+SELECT * FROM ESPECIE;
 
 CREATE TABLE PLANETA ( --AAAAAAAAAAAAAA
     PLANETA VARCHAR2(50) PRIMARY KEY,
@@ -45,22 +50,25 @@ CREATE TABLE PLANETA ( --AAAAAAAAAAAAAA
     CLIMA VARCHAR2(50),
     POBLACION NUMBER,
     UBICACION VARCHAR2(100),
-    TIPO VARCHAR2(50),
+    TIPO VARCHAR2(50) CHECK (TIPO IN('Habitable', 'Inhabitable')),
 
     FOREIGN KEY (UBICACION) REFERENCES SECTOR_GALACTICO(SECTOR)
 );
+
+SELECT * FROM PLANETA;
 
 CREATE TABLE NAVE ( --AAAAAAAAAA
     NAVE VARCHAR2(50) PRIMARY KEY,
     DESCRIPCION VARCHAR2(255),
     CLASE VARCHAR2(50),
-    CAPACIDAD NUMBER,
     ARMAMENTO VARCHAR2(255),
     VELOCIDAD NUMBER,
     TRIPULACION NUMBER,
 
     FOREIGN KEY (CLASE) REFERENCES CLASE_DE_NAVE(CLASE)
 );
+
+SELECT * FROM NAVE;
 
 CREATE TABLE ORGANIZACION ( --AAAAAAAAAA
     ORGANIZACION VARCHAR2(100) PRIMARY KEY,
@@ -69,6 +77,8 @@ CREATE TABLE ORGANIZACION ( --AAAAAAAAAA
     FUNDACION VARCHAR2(50),
     BASE_OPERACION VARCHAR2(100)
 );
+
+SELECT * FROM ORGANIZACION;
 
 CREATE TABLE ARMA ( --AAAAAAAAAAAAA
     ARMA VARCHAR2(100) PRIMARY KEY,
@@ -79,6 +89,8 @@ CREATE TABLE ARMA ( --AAAAAAAAAAAAA
     FABRICANTE VARCHAR2(100)
 );
 
+SELECT * FROM ARMA;
+
 CREATE TABLE EVENTO ( --AAAAAAAAAAA
     EVENTO VARCHAR2(255) PRIMARY KEY,
     DESCRIPCION VARCHAR2(100),
@@ -88,6 +100,8 @@ CREATE TABLE EVENTO ( --AAAAAAAAAAA
     PARTICIPANTES VARCHAR2(255)
 );
 
+SELECT * FROM EVENTO;
+
 CREATE TABLE HABILIDAD ( --AAAAAAAAAAA
     HABILIDAD VARCHAR2(255) PRIMARY KEY,
     DESCRIPCION VARCHAR2(255),
@@ -95,6 +109,8 @@ CREATE TABLE HABILIDAD ( --AAAAAAAAAAA
     NIVEL NUMBER,
     REQUISITOS VARCHAR2(255)
 );
+
+SELECT * FROM HABILIDAD;
 
 CREATE TABLE OBJETO ( --AAAAAAAAA
     OBJETO VARCHAR2(100) PRIMARY KEY,
@@ -104,6 +120,8 @@ CREATE TABLE OBJETO ( --AAAAAAAAA
     PROPIETARIO VARCHAR2(100),
     FECHA_DESCUBRIMIENTO VARCHAR2(50)
 );
+
+SELECT * FROM OBJETO;
 
 CREATE TABLE DROIDE (
     DROIDE VARCHAR2(100) PRIMARY KEY,
@@ -117,6 +135,8 @@ CREATE TABLE DROIDE (
     FOREIGN KEY (PROPIETARIO) REFERENCES PERSONAJE(PERSONAJE)
 );
 
+SELECT * FROM DROIDE;
+
 CREATE TABLE SECTOR_GALACTICO ( --AAAAAAAAAAA
     SECTOR VARCHAR2(100) PRIMARY KEY,
     DESCRIPCION VARCHAR2(255),
@@ -126,6 +146,8 @@ CREATE TABLE SECTOR_GALACTICO ( --AAAAAAAAAAA
 
 );
 
+SELECT * FROM SECTOR_GALACTICO;
+
 CREATE TABLE CLASE_DE_NAVE ( --AAAAAAA
     CLASE VARCHAR2(50) PRIMARY KEY,
     DESCRIPCION VARCHAR2(255),
@@ -134,6 +156,8 @@ CREATE TABLE CLASE_DE_NAVE ( --AAAAAAA
     ARMAMENTO VARCHAR2(255)
 );
 
+SELECT * FROM CLASE_DE_NAVE;
+
 CREATE TABLE LENGUAJE ( --AAAAAAAAAA
     LENGUAJE VARCHAR2(50) PRIMARY KEY,
     DESCRIPCION VARCHAR2(255),
@@ -141,6 +165,8 @@ CREATE TABLE LENGUAJE ( --AAAAAAAAAA
     HABLANTES NUMBER,
     ESCRITO VARCHAR(10) CHECK (ESCRITO IN ('True', 'False'))
 );
+
+SELECT * FROM LENGUAJE;
 
 CREATE TABLE RAZA (
     RAZA VARCHAR2(100) PRIMARY KEY,
@@ -151,6 +177,8 @@ CREATE TABLE RAZA (
     FOREIGN KEY (PLANETA_ORIGEN) REFERENCES PLANETA(PLANETA)
 );
 
+SELECT * FROM RAZA;
+
 CREATE TABLE MATERIAL ( --AAAAAA
     MATERIAL VARCHAR2(100) PRIMARY KEY,
     DESCRIPCION VARCHAR2(255),
@@ -158,6 +186,8 @@ CREATE TABLE MATERIAL ( --AAAAAA
     USOS VARCHAR2(255),
     RAREZA VARCHAR2(50) CHECK (RAREZA IN ('Común', 'Poco común', 'Raro', 'Muy raro'))
 );
+
+SELECT * FROM MATERIAL;
 
 INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Humano', 'Especie predominante en la galaxia, con gran diversidad cultural.', 80);
 INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Twi''lek', 'Humanoides con tentáculos en la cabeza llamados lekku.', 90);
@@ -250,6 +280,11 @@ INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS,
 INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector Quelii', 'Sector galáctico poco explorado, conocido por sus recursos naturales y su relativa neutralidad en conflictos galácticos.', 'x: 6789, y: 1234', 4, 'Desconocido');
 INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sistema de Najra', 'Sistema estelar conocido por sus planetas ricos en minerales y su importancia en la industria minera galáctica.', 'x: 7890, y: 3456', 6, 'Desconocido');
 INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sistema de Dagobah', 'Sistema remoto y poco explorado, conocido por albergar el planeta Dagobah, un mundo pantanoso y rico en la Fuerza.', 'x: 1234, y: 5678', 1, 'Desconocido');
+INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector de Yavin', 'Sector ubicado en el Borde Exterior de la galaxia, famoso por la batalla de Yavin IV', 'X: 155, Y: 34, Z: 22', 4, 'Ninguno');
+INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector de Taris', 'Sector situado en el Borde Exterior, conocido por su planeta principal, Taris, un mundo urbanizado y decadente, hogar de diversas facciones criminales y políticos corruptos.', 'X: 120, Y: 50, Z: 22', 1, 'Ninguno');
+INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector de Vulpter', 'Sector galáctico en la región exterior, conocido por su sector desértico y planetas inhóspitos. La mayoría de las criaturas de este sector son adaptadas a condiciones extremas.', 'X: -2, Y: 3, Z: 8', 3, 'No asignado');
+INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector de Ahch-To', 'Sector galáctico en la región desconectada de la galaxia central, conocido principalmente por ser hogar del planeta Ahch-To, donde se encuentra el Templo Jedi abandonado.', 'X: -5, Y: 12, Z: 9', 1, 'No asignado');
+INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector de Lothal', 'Sector galáctico en la región del Borde Interior, conocido principalmente por el planeta Lothal, que es un importante centro de producción industrial y militar, especialmente para el Imperio Galáctico.', 'X: 2, Y: -3, Z: 5', 1, 'No asignado');
 
 
 SELECT * FROM SECTOR_GALACTICO;
@@ -264,6 +299,8 @@ INSERT INTO CLASE_DE_NAVE (CLASE, DESCRIPCION, CAPACIDAD_MAX, VELOCIDAD_MAX, ARM
 INSERT INTO CLASE_DE_NAVE (CLASE, DESCRIPCION, CAPACIDAD_MAX, VELOCIDAD_MAX, ARMAMENTO) VALUES ('Explorador', 'Nave pequeña con sistemas avanzados de reconocimiento.', 10, 1100, 'Ninguno o cañón ligero');
 INSERT INTO CLASE_DE_NAVE (CLASE, DESCRIPCION, CAPACIDAD_MAX, VELOCIDAD_MAX, ARMAMENTO) VALUES ('Transbordador', 'Nave de transporte de pasajeros o tropas.', 30, 850, 'Cañones defensivos');
 INSERT INTO CLASE_DE_NAVE (CLASE, DESCRIPCION, CAPACIDAD_MAX, VELOCIDAD_MAX, ARMAMENTO) VALUES ('Carguero Pesado', 'Nave diseñada para el transporte masivo de mercancías.', 20000, 750, 'Defensas mínimas');
+INSERT INTO CLASE_DE_NAVE (CLASE, DESCRIPCION, CAPACIDAD_MAX, VELOCIDAD_MAX, ARMAMENTO) VALUES ('Carguero Ligero', 'Nave de transporte rápida y maniobrable, utilizada para el comercio y el contrabando', 100, 1100, 'Cañones láser dobles, torpedos de protones');
+
 
 SELECT * FROM CLASE_DE_NAVE;
 
@@ -304,12 +341,16 @@ INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VA
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Kashyyyk', 'El hogar de los Wookiees, cubierto de vastos bosques y árboles gigantes.', 'Tropical', 5000000, 'Sector Mid Rim', 'Habitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Jakku', 'Planeta desértico donde se encuentra el "Cruzado" y el "Halcon Milenario".', 'Desértico', 10000, 'Sistema de Najra', 'Habitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Corellia', 'Planeta natal de Han Solo y conocido por su industria de construcción de naves espaciales.', 'Templado', 15000000000, 'Sector Corelliano', 'Habitable');
-INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Desconocido', 'Planeta de origen no identificado o no registrado en los archivos galácticos.', 'Desconocido', NULL, 'Desconocido', 'Desconocido');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Desconocido', 'Planeta de origen no identificado o no registrado en los archivos galácticos.', 'Desconocido', NULL, 'Desconocido', null);
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Stewjon', 'Planeta de origen de Obi-Wan Kenobi, con una cultura y geografía poco exploradas en los registros galácticos.', 'Templado', null, 'Sector de Stewjon', 'Habitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Dathomir', 'Planeta remoto y peligroso, hogar de las Hermanas de la Noche y los Zabrak. Conocido por su conexión con el lado oscuro de la Fuerza.', 'Árido y tormentoso', 1000000, 'Sector Quelii', 'Habitable');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Yavin 4', 'Un planeta selvático y húmedo, hogar de los antiguos templos massassi y escenario de la victoria rebelde en la batalla de Yavin.', 'Tropical', 100000, 'Sector de Yavin', 'Habitable');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Taris', 'Planeta urbanizado, conocido por su extensa ciudad sobre la superficie, donde las capas inferiores están en ruinas y controladas por criminales.', 'Templado', 1000000, 'Sector de Taris', 'Habitable');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Vulpter', 'Planeta desértico en el sector de Vulpter, habitado por especies adaptadas a condiciones extremas de calor. Es conocido por su escasa vegetación y sus tormentas de arena.', 'Desértico', 5000000, 'Sector de Vulpter', 'Habitable');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Ahch-To', 'Planeta rocoso y aislado ubicado en el borde de la galaxia, conocido por ser el hogar de la primera ubicación del Templo Jedi y por sus aguas tranquilas y paisajes serenos.', 'Tropical', 20, 'Sector de Ahch-To', 'Habitable');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Lothal', 'Planeta industrializado en el Borde Interior, conocido por su gran capacidad de producción y su estratégica importancia durante la guerra contra el Imperio. Su paisaje combina zonas industriales y rurales.', 'Templado', 2000000, 'Sector de Lothal', 'Habitable');
 
 select * from PLANETA;
-
 
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Luke Skywalker', 'Humano', 'Tatooine', 'Alianza Rebelde', 'Maestro', 'Masculino', 53, 9, 'Leia Organa, Han Solo', 'Darth Vader, Emperador Palpatine', '19 ABY', 'Muerto');
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Darth Vader', 'Humano', 'Tatooine', 'Imperio Galáctico', 'Lord', 'Masculino', 45, 10, 'Emperador Palpatine', 'Luke Skywalker, Alianza Rebelde', '41 ABY', 'Muerto');
@@ -321,6 +362,52 @@ INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO,
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Chewbacca', 'Wookiee', 'Kashyyyk', 'Alianza Rebelde', 'Soldado', 'Masculino', 234, 8, 'Han Solo, Luke Skywalker', 'Imperio Galáctico', '200 ABY', 'Vivo');
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Darth Maul', 'Zabrak', 'Dathomir', 'Sith', 'Aprendiz', 'Masculino', 50, 8, 'Darth Sidious', 'Obi-Wan Kenobi, Qui-Gon Jinn', '54 ABY', 'Muerto');
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Rey', 'Humano', 'Jakku', 'Resistencia', 'Aprendiz', 'Femenino', 25, 8, 'Finn, Poe Dameron', 'Kylo Ren, Snoke', '15 DBY', 'Vivo');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Poe Dameron', 'Humano', 'Yavin 4', 'Resistencia', 'General', 'Masculino', 32, 8, 'Finn, Rey, BB-8', 'Primera Orden', '26 ABY', 'Vivo');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Jabba el Hutt', 'Hutt', 'Tatooine', 'Clan Hutt', 'Lord', 'Masculino', 600, 7, 'Bib Fortuna, Boba Fett', 'Luke Skywalker, Han Solo, Leia Organa', '600 BBY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Darth Revan', 'Humano', 'Taris', 'Orden Jedi', 'Lord', 'Masculino', 35, 10, 'Bastila Shan, Carth Onasi', 'Malak, Sith', '3996 BBY', 'Desconocido');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Meetra Surik', 'Humano', 'Desconocido', 'Sith', 'Aprendiz', 'Femenino', 30, 9, 'HK-47, T3-M4', 'Darth Nihilus, Darth Sion', '3956 BBY', 'Desconocido');
 
+select * from planeta;
+select * from especie;
+select * from organizacion;
 
 SELECT * FROM PERSONAJE;
+
+INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('Millennium Falcon', 'Legendaria nave de Han Solo, veloz y modificada para el contrabando', 'Carguero Ligero', 'Cañones láser dobles, torpedos de protones', 1050, 4);
+INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('X-Wing', 'Caza estelar usado por la Alianza Rebelde, versátil y bien armado', 'Caza Estelar', 'Cuatro cañones láser, torpedos de protones', 1050, 1);
+INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('TIE Fighter', 'Caza estelar estándar del Imperio, rápido pero sin escudos', 'Caza Estelar', 'Dos cañones láser', 1200, 1);
+INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('Slave I', 'Nave de cazarrecompensas de Boba Fett, altamente armada', 'Caza Estelar', 'Cañones láser, misiles teledirigidos, bombas sísmicas', 1000, 1);
+INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('Star Destroyer', 'Nave de guerra del Imperio, poderosa y temida', 'Destructor Estelar', 'Turboláseres, lanzadores de misiles, cañones de iones', 975, 37000);
+INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('Naboo N-1 Starfighter', 'Caza estelar elegante y rápido usado por la realeza de Naboo', 'Caza Estelar', 'Dos cañones láser, torpedos de protones', 1100, 1);
+INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('Venator-class Star Destroyer', 'Nave capital de la República, usada durante las Guerras Clon', 'Crucero',  'Turboláseres, cañones de iones, baterías antiaéreas', 975, 7400);
+INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('Ghost', 'Nave de la tripulación de Hera Syndulla, modificada para sigilo y combate', 'Carguero Ligero', 'Cañones láser, torpedos de protones', 1020, 5);
+INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('Ebon Hawk', 'Nave legendaria usada en la era de la Antigua República', 'Carguero Ligero', 'Cañones láser, torpedos de protones', 1050, 6);
+INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('Tantive IV', 'Corbeta Corelliana usada por la Princesa Leia para transportar los planos de la Estrella de la Muerte', 'Corbeta', 'Turboláseres, cañones de iones', 950, 46);
+
+SELECT * FROM NAVE;
+
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('R2-D2', 'Astromecánico', 'R2-series', 'Industrial Automaton', 'Droide astromecánico leal y versátil con múltiples herramientas', 'Luke Skywalker', '32 ABY');
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('C-3PO', 'Protocolar', '3PO-series', 'Cybot Galactica', 'Droide de protocolo experto en más de seis millones de formas de comunicación', 'Leia Organa', '32 ABY');
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('IG-88', 'De combate', 'IG-series', 'Holowan Laboratories', 'Droide asesino con inteligencia avanzada y letalidad extrema', null, '19 ABY');
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('2-1B', 'Médico', '2-1B-series', 'Industrial Automaton', 'Droide médico con avanzados conocimientos en cirugía y tratamientos', null, '22 ABY');
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('Droideka', 'De combate', 'Droideka', 'Colicoid Creation Nest', 'Droide de combate con escudos de energía y gran potencia de fuego', null, '32 ABY');
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('BB-8', 'Astromecánico', 'BB-series', 'Industrial Automaton', 'Droide esférico con avanzada tecnología de navegación y comunicación', 'Poe Dameron', '34 ABY');
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('FX-7', 'Médico', 'FX-series', 'MedTech Industries', 'Droide médico especializado en cirugías con múltiples brazos', null, '19 ABY');
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('EV-9D9', 'De mantenimiento', 'EV-series', 'MerenData', 'Droide supervisor de mantenimiento con personalidad sádica', 'Jabba el Hutt', '10 ABY');
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('HK-47', 'De combate', 'HK-series', 'Czerka Corporation', 'Droide asesino con gran habilidad para el combate y el sigilo', 'Darth Revan', '3960 ABY');
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('T3-M4', 'Astromecánico', 'T3-series', 'Duwani Mechanical Products', 'Droide astromecánico con habilidades de hackeo y reparación', 'Meetra Surik', '3956 ABY');
+
+SELECT * FROM Droide;
+
+INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Bantha', 'Gran animal herbívoro, utilizado por los habitantes de Tatooine como montura. Su cuerpo masivo es cubierto de pelaje y tiene grandes cuernos.', 'Tatooine', 50);
+INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Tauntaun', 'Reptil herbívoro de la nieve, utilizado como montura en Hoth por los soldados de la Alianza Rebelde debido a su resistencia al frío.', 'Hoth', 20);
+INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Dewback', 'Reptil grande y resistente, comúnmente utilizado como montura en los desiertos de Tatooine. Tiene una piel gruesa que le protege del calor.', 'Tatooine', 30);
+INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Rancor', 'Monstruo gigantesco y feroz, utilizado por Jabba el Hutt como una herramienta de tortura. Es carnívoro y extremadamente fuerte.', 'Dathomir', 40);
+INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Sarlacc', 'Gigantesco organismo subterráneo, conocido por su capacidad para atrapar presas y devorarlas lentamente durante siglos.', 'Tatooine', 1000);
+INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Womp Rat', 'Pequeña criatura roedora que habita en los desiertos de Tatooine. Son considerados plagas, pero también pueden ser cazados para alimento.', 'Tatooine', 5);
+INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Vulpter', 'Criatura cuadrúpeda de pelaje multicolor que vive en los desiertos. Son rápidos y adaptables a las duras condiciones del planeta Vulpter.', 'Vulpter', 15);
+INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Porg', 'Pequeñas criaturas parecidas a aves, originarias de Ahch-To. Son conocidos por su aspecto tierno y su comportamiento curioso.', 'Ahch-To', 10);
+INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Lothal Cat', 'Un felino nativo del planeta Lothal, conocido por su agilidad y sus ojos que reflejan una luz fosforescente en la oscuridad.', 'Lothal', 10);
+INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Blurrg', 'Reptil de gran tamaño que habita en el planeta Sorgan. Usado como montura por los caza recompensas en su búsqueda de presas.', 'Endor', 30);
+
+select * from raza;
