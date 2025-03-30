@@ -20,7 +20,7 @@ CREATE TABLE PERSONAJE (
     ESPECIE VARCHAR2(50) NOT NULL,
     PLANETA_DE_ORIGEN VARCHAR2(50) NOT NULL,
     AFILIACION VARCHAR2(100) NOT NULL,
-    RANGO VARCHAR2(50) CHECK (RANGO IN ('Maestro', 'Aprendiz', 'General', 'Soldado', 'Lord', 'Emperador')),
+    RANGO VARCHAR2(50) CHECK (RANGO IN ('Maestro', 'Aprendiz', 'General', 'Soldado', 'Lord', 'Emperador', 'Ninguno')),
     GENERO VARCHAR2(20) CHECK (GENERO IN ('Masculino', 'Femenino', 'Otro', 'No especificado')),
     EDAD NUMBER CHECK (EDAD >= 0),
     FUERZA NUMBER CHECK (FUERZA BETWEEN 0 AND 10),
@@ -125,7 +125,7 @@ SELECT * FROM OBJETO;
 
 CREATE TABLE DROIDE (
     DROIDE VARCHAR2(100) PRIMARY KEY,
-    TIPO VARCHAR2(50) CHECK (TIPO IN ('Astromecánico', 'Protocolar', 'Médico', 'De combate', 'De mantenimiento')),
+    TIPO VARCHAR2(50) CHECK (TIPO IN ('Astromecánico', 'Protocolar', 'Médico', 'De combate', 'De mantenimiento', 'Amalgama')),
     MODELO VARCHAR2(50),
     FABRICANTE VARCHAR2(100),
     DESCRIPCION VARCHAR2(255),
@@ -200,7 +200,7 @@ INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Togruta', 'Hu
 INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Mon Calamari', 'Amfibios inteligentes de Mon Cala, conocidos por su destreza en la navegación.', 80);
 INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Ewok', 'Criaturas pequeñas y peludas de Endor, muy ingeniosas.', 60);
 INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Desconocido', 'Especie no identificada o de origen desconocido en la galaxia.', NULL);
-
+INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Nikto', 'Especie humanoide reptiliana originaria de Kintan, conocida por su fuerza física y adaptación a entornos hostiles. Presenta múltiples subespecies con variaciones en piel y cuernos.', 85);
 SELECT * FROM ESPECIE;
 
 INSERT INTO ORGANIZACION (ORGANIZACION, DESCRIPCION, TIPO, FUNDACION, BASE_OPERACION) VALUES ('Imperio Galáctico', 'Gobierno autoritario que reemplazó a la República.', 'Gubernamental', '19 ABY', 'Coruscant');
@@ -215,7 +215,7 @@ INSERT INTO ORGANIZACION (ORGANIZACION, DESCRIPCION, TIPO, FUNDACION, BASE_OPERA
 INSERT INTO ORGANIZACION (ORGANIZACION, DESCRIPCION, TIPO, FUNDACION, BASE_OPERACION) VALUES ('Nueva República', 'Gobierno democrático sucesor de la Alianza Rebelde.', 'Gubernamental', '5 DBY', 'Hosnian Prime');
 INSERT INTO ORGANIZACION (ORGANIZACION, DESCRIPCION, TIPO, FUNDACION, BASE_OPERACION) VALUES ('República Galáctica', 'Gobierno central de la galaxia que promueve la democracia y la paz, formado por múltiples sistemas estelares y planetas.', 'Gubernamental', '25,000 ABY', 'Coruscant');
 INSERT INTO ORGANIZACION (ORGANIZACION, DESCRIPCION, TIPO, FUNDACION, BASE_OPERACION) VALUES ('Resistencia', 'Movimiento militar dedicado a combatir la Primera Orden y restaurar la libertad en la galaxia.', 'Militar', '34 DBY', 'Base Ilium');
-
+INSERT INTO ORGANIZACION (ORGANIZACION, DESCRIPCION, TIPO, FUNDACION, BASE_OPERACION) VALUES ('Corredores de Carreras', 'Agrupación informal de pilotos profesionales que compiten en carreras ilegales o sancionadas', 'Comercial', 'Desconocida (antes del 32 ABY)', 'Variable');
 SELECT * FROM ORGANIZACION;
 
 INSERT INTO ARMA (ARMA, TIPO, DESCRIPCION, POTENCIA, ALCANCE, FABRICANTE) VALUES ('Blaster E-11', 'Blaster', 'Blaster estándar utilizado por los soldados imperiales.', 5, 100, 'BlasTech Industries');
@@ -286,6 +286,7 @@ INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS,
 INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector de Ahch-To', 'Sector galáctico en la región desconectada de la galaxia central, conocido principalmente por ser hogar del planeta Ahch-To, donde se encuentra el Templo Jedi abandonado.', 'X: -5, Y: 12, Z: 9', 1, 'No asignado');
 INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector de Lothal', 'Sector galáctico en la región del Borde Interior, conocido principalmente por el planeta Lothal, que es un importante centro de producción industrial y militar, especialmente para el Imperio Galáctico.', 'X: 2, Y: -3, Z: 5', 1, 'No asignado');
 INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sistema Forome', 'Sistema estelar lejano al sistema Therezar, según Zargo Anaximander, regente de la estación minera Nightside', 'X: 7, Y: -3, Z: 11', 4, 'Darth Saevius');
+INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Espacio Hutt', 'Región controlada por el Clan Hutt, conocida por el crimen organizado, el comercio ilegal y la esclavitud. Incluye planetas como Nal Hutta, Nar Shaddaa y Kintan.', 'R-16 (Borde Medio)', 20, 'Consejo de Grandes Hutts');
 
 SELECT * FROM SECTOR_GALACTICO;
 
@@ -349,7 +350,7 @@ INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VA
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Vulpter', 'Planeta desértico en el sector de Vulpter, habitado por especies adaptadas a condiciones extremas de calor. Es conocido por su escasa vegetación y sus tormentas de arena.', 'Desértico', 5000000, 'Sector de Vulpter', 'Habitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Ahch-To', 'Planeta rocoso y aislado ubicado en el borde de la galaxia, conocido por ser el hogar de la primera ubicación del Templo Jedi y por sus aguas tranquilas y paisajes serenos.', 'Tropical', 20, 'Sector de Ahch-To', 'Habitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Lothal', 'Planeta industrializado en el Borde Interior, conocido por su gran capacidad de producción y su estratégica importancia durante la guerra contra el Imperio. Su paisaje combina zonas industriales y rurales.', 'Templado', 2000000, 'Sector de Lothal', 'Habitable');
-
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Kintan', 'Planeta árido y rocoso, hogar de la especie Nikto. Fue controlado por los Hutts durante siglos y es conocido por sus peligrosas criaturas y minas de minerales.', 'Árido', 12000000, 'Espacio Hutt', 'Habitable');
 select * from PLANETA;
 
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Luke Skywalker', 'Humano', 'Tatooine', 'Alianza Rebelde', 'Maestro', 'Masculino', 53, 9, 'Leia Organa, Han Solo', 'Darth Vader, Emperador Palpatine', '19 ABY', 'Muerto');
@@ -363,14 +364,11 @@ INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO,
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Darth Maul', 'Zabrak', 'Dathomir', 'Sith', 'Aprendiz', 'Masculino', 50, 8, 'Darth Sidious', 'Obi-Wan Kenobi, Qui-Gon Jinn', '54 ABY', 'Muerto');
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Rey', 'Humano', 'Jakku', 'Resistencia', 'Aprendiz', 'Femenino', 25, 8, 'Finn, Poe Dameron', 'Kylo Ren, Snoke', '15 DBY', 'Vivo');
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Poe Dameron', 'Humano', 'Yavin 4', 'Resistencia', 'General', 'Masculino', 32, 8, 'Finn, Rey, BB-8', 'Primera Orden', '2 DBY', 'Vivo');
-INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Jabba el Hutt', 'Hutt', 'Tatooine', 'Clan Hutt', 'Lord', 'Masculino', 600, 7, 'Bib Fortuna, Boba Fett', 'Luke Skywalker, Han Solo, Leia Organa', '600 DBY', 'Muerto');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Jabba el Hutt', 'Hutt', 'Tatooine', 'Clan Hutt', 'Lord', 'Masculino', 600, 7, 'Bib Fortuna, Boba Fett', 'Luke Skywalker, Han Solo, Leia Organa', '600 ABY', 'Muerto');
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Darth Revan', 'Humano', 'Taris', 'Orden Jedi', 'Lord', 'Masculino', 35, 10, 'Bastila Shan, Carth Onasi', 'Malak, Sith', '3996 ABY', 'Desconocido');
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Meetra Surik', 'Humano', 'Desconocido', 'Sith', 'Aprendiz', 'Femenino', 30, 9, 'HK-47, T3-M4', 'Darth Nihilus, Darth Sion', '3956 ABY', 'Desconocido');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('"Steel Claw" Kane', 'Nikto', 'Kintan', 'Corredores de Carreras', 'Ninguno', 'Masculino', null, 3, null, 'La Remesa Mala', '19 DBY', 'Vivo');
 
-DELETE FROM PERSONAJE;
-select * from planeta;
-select * from especie;
-select * from organizacion;
 
 SELECT * FROM PERSONAJE;
 
@@ -397,6 +395,8 @@ INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, 
 INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('EV-9D9', 'De mantenimiento', 'EV-series', 'MerenData', 'Droide supervisor de mantenimiento con personalidad sádica', 'Jabba el Hutt', '10 ABY');
 INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('HK-47', 'De combate', 'HK-series', 'Czerka Corporation', 'Droide asesino con gran habilidad para el combate y el sigilo', 'Darth Revan', '3960 ABY');
 INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('T3-M4', 'Astromecánico', 'T3-series', 'Duwani Mechanical Products', 'Droide astromecánico con habilidades de hackeo y reparación', 'Meetra Surik', '3956 ABY');
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('"Hyper" Rod', 'Protocolar', '3PO-series', 'Cybot Galactica', 'Droide de protocolo reprogramado que ahora se centra en la incivilizada tarea de eliminar a sus oponentes', null, '19 ABY');
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('"Quick-Draw" Quasar', 'Amalgama', '3PO-series / B1 ', 'Cybot Galactica / Baktoid Combat Automata', 'Cuerpo de un droide de protocolo y la cabeza de un robot de combate B1. Pintado con un toque de púrpura y amarillo, pone en práctica su programación estratégica.', null, '19 ABY');
 
 DELETE FROM DROIDE;
 SELECT * FROM Droide;
