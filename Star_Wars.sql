@@ -125,7 +125,7 @@ SELECT * FROM OBJETO;
 
 CREATE TABLE DROIDE (
     DROIDE VARCHAR2(100) PRIMARY KEY,
-    TIPO VARCHAR2(50) CHECK (TIPO IN ('Astromecánico', 'Protocolar', 'Médico', 'De combate', 'De mantenimiento', 'Amalgama')),
+    TIPO VARCHAR2(50) CHECK (TIPO IN ('Astromecánico', 'Protocolar', 'Médico', 'De combate', 'De mantenimiento', 'Amalgama', 'Torturador')),
     MODELO VARCHAR2(50),
     FABRICANTE VARCHAR2(100),
     DESCRIPCION VARCHAR2(255),
@@ -201,6 +201,8 @@ INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Mon Calamari'
 INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Ewok', 'Criaturas pequeñas y peludas de Endor, muy ingeniosas.', 60);
 INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Desconocido', 'Especie no identificada o de origen desconocido en la galaxia.', NULL);
 INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Nikto', 'Especie humanoide reptiliana originaria de Kintan, conocida por su fuerza física y adaptación a entornos hostiles. Presenta múltiples subespecies con variaciones en piel y cuernos.', 85);
+INSERT INTO ESPECIE (ESPECIE, DESCRIPCION, PROMEDIO_VIDA) VALUES ('Mandaloriano', 'Los mandalorianos son una cultura guerrera, temida y respetada, conocida por su código de honor, su destreza en combate y su inquebrantable lealtad a sus propios ideales y tradición.', 75);
+
 SELECT * FROM ESPECIE;
 
 INSERT INTO ORGANIZACION (ORGANIZACION, DESCRIPCION, TIPO, FUNDACION, BASE_OPERACION) VALUES ('Imperio Galáctico', 'Gobierno autoritario que reemplazó a la República.', 'Gubernamental', '19 ABY', 'Coruscant');
@@ -228,6 +230,7 @@ INSERT INTO ARMA (ARMA, TIPO, DESCRIPCION, POTENCIA, ALCANCE, FABRICANTE) VALUES
 INSERT INTO ARMA (ARMA, TIPO, DESCRIPCION, POTENCIA, ALCANCE, FABRICANTE) VALUES ('Dardo Kaminoano', 'Dardo', 'Dardo venenoso utilizado para asesinatos sigilosos.', 4, 50, 'Kamino');
 INSERT INTO ARMA (ARMA, TIPO, DESCRIPCION, POTENCIA, ALCANCE, FABRICANTE) VALUES ('Cañón de Iones', 'Cañón', 'Arma diseñada para desactivar naves sin destruirlas.', 6, 3000, 'Rothana Heavy Engineering');
 INSERT INTO ARMA (ARMA, TIPO, DESCRIPCION, POTENCIA, ALCANCE, FABRICANTE) VALUES ('Blaster Westar-35', 'Blaster', 'Blaster mandaloriano utilizado por los guerreros.', 6, 120, 'MandalMotors');
+INSERT INTO ARMA (ARMA, TIPO, DESCRIPCION, POTENCIA, ALCANCE, FABRICANTE) VALUES ('773 Firepuncher rifle', 'Blaster', 'El arma preferida del francotirador Crosshair de la Fuerza Clon 99, incluso un rifle Firepuncher 773 estándar en manos de un soldado clon regular lo convierte en una herramienta poderosa en la lucha contra los Separatistas.', 8, 1000, 'Merr-Sonn Munitions, Inc.');
 
 SELECT * FROM ARMA;
 
@@ -287,6 +290,7 @@ INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS,
 INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector de Lothal', 'Sector galáctico en la región del Borde Interior, conocido principalmente por el planeta Lothal, que es un importante centro de producción industrial y militar, especialmente para el Imperio Galáctico.', 'X: 2, Y: -3, Z: 5', 1, 'No asignado');
 INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sistema Forome', 'Sistema estelar lejano al sistema Therezar, según Zargo Anaximander, regente de la estación minera Nightside', 'X: 7, Y: -3, Z: 11', 4, 'Darth Saevius');
 INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Espacio Hutt', 'Región controlada por el Clan Hutt, conocida por el crimen organizado, el comercio ilegal y la esclavitud. Incluye planetas como Nal Hutta, Nar Shaddaa y Kintan.', 'R-16 (Borde Medio)', 20, 'Consejo de Grandes Hutts');
+INSERT INTO SECTOR_GALACTICO (SECTOR, DESCRIPCION, COORDENADAS, NUMERO_PLANETAS, GOBERNADOR) VALUES ('Sector de la Niebla', 'Región remota y aislada del Borde Exterior, conocida por su densa nube de gas que dificulta la navegación y es hogar del planeta Kamino, donde se ocultan secretos de clonación.', 'X: 50,000 y Y: 25,000.', 3, 'El Comando Clon');
 
 SELECT * FROM SECTOR_GALACTICO;
 
@@ -351,6 +355,8 @@ INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VA
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Ahch-To', 'Planeta rocoso y aislado ubicado en el borde de la galaxia, conocido por ser el hogar de la primera ubicación del Templo Jedi y por sus aguas tranquilas y paisajes serenos.', 'Tropical', 20, 'Sector de Ahch-To', 'Habitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Lothal', 'Planeta industrializado en el Borde Interior, conocido por su gran capacidad de producción y su estratégica importancia durante la guerra contra el Imperio. Su paisaje combina zonas industriales y rurales.', 'Templado', 2000000, 'Sector de Lothal', 'Habitable');
 INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Kintan', 'Planeta árido y rocoso, hogar de la especie Nikto. Fue controlado por los Hutts durante siglos y es conocido por sus peligrosas criaturas y minas de minerales.', 'Árido', 12000000, 'Espacio Hutt', 'Habitable');
+INSERT INTO PLANETA (PLANETA, DESCRIPCION, CLIMA, POBLACION, UBICACION, TIPO) VALUES ('Kamino', 'Kamino es un remoto y lluvioso planeta, hogar de los cloners, conocido por su vasto océano y sus instalaciones ocultas donde se crearon los clones que sirvieron a la República.', 'Tropical y lluvioso', 10000, 'Sector de la Niebla', 'Habitable');
+
 select * from PLANETA;
 
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Luke Skywalker', 'Humano', 'Tatooine', 'Alianza Rebelde', 'Maestro', 'Masculino', 53, 9, 'Leia Organa, Han Solo', 'Darth Vader, Emperador Palpatine', '19 ABY', 'Muerto');
@@ -368,6 +374,8 @@ INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO,
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Darth Revan', 'Humano', 'Taris', 'Orden Jedi', 'Lord', 'Masculino', 35, 10, 'Bastila Shan, Carth Onasi', 'Malak, Sith', '3996 ABY', 'Desconocido');
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Meetra Surik', 'Humano', 'Desconocido', 'Sith', 'Aprendiz', 'Femenino', 30, 9, 'HK-47, T3-M4', 'Darth Nihilus, Darth Sion', '3956 ABY', 'Desconocido');
 INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('"Steel Claw" Kane', 'Nikto', 'Kintan', 'Corredores de Carreras', 'Ninguno', 'Masculino', null, 3, null, 'La Remesa Mala', '19 DBY', 'Vivo');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Capitán Doza', 'Humano', 'Desconocido', 'Resistencia', 'General', 'Masculino', 55, 3, 'Venisa Doza, Torra Doza, Team Fireball, la Resistencia, tripulación de la Colossus.', 'Primera Orden, agentes imperiales leales, piratas aliados con la Primera Orden, amenazas a la Colossus.', '45 DBY', 'Vivo');
+INSERT INTO PERSONAJE (PERSONAJE, ESPECIE, PLANETA_DE_ORIGEN, AFILIACION, RANGO, GENERO, EDAD, FUERZA, ALIADOS, ENEMIGOS, FECHA_DE_NACIMIENTO, ESTADO) VALUES ('Boba Fett', 'Mandaloriano', 'Kamino', 'Cazarrecompensas', 'Ninguno', 'Masculino', 57, 9, 'Fennec Shand, Jabba el Hutt, Din Djarin, mandalorianos, Cartel Hutt.', 'Han Solo, Luke Skywalker, Alianza Rebelde, cazarrecompensas rivales, Imperio Galáctico.', '32 ABY', 'Vivo');
 
 
 SELECT * FROM PERSONAJE;
@@ -382,6 +390,7 @@ INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) V
 INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('Ghost', 'Nave de la tripulación de Hera Syndulla, modificada para sigilo y combate', 'Carguero Ligero', 'Cañones láser, torpedos de protones', 1020, 5);
 INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('Ebon Hawk', 'Nave legendaria usada en la era de la Antigua República', 'Carguero Ligero', 'Cañones láser, torpedos de protones', 1050, 6);
 INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('Tantive IV', 'Corbeta Corelliana usada por la Princesa Leia para transportar los planos de la Estrella de la Muerte', 'Corbeta', 'Turboláseres, cañones de iones', 950, 46);
+INSERT INTO NAVE (NAVE, DESCRIPCION, CLASE, ARMAMENTO, VELOCIDAD, TRIPULACION) VALUES ('A-wing Fighter', 'Con su elegante forma de punta de flecha, su cabina aerodinámica y sus enormes motores gemelos, el caza estelar Ala-A proyecta una velocidad impresionante incluso estacionado en los hangares de la Alianza.', 'Caza Estelar', 'Cañones láser bláster, misiles de protones', 1050, 1);
 
 SELECT * FROM NAVE;
 
@@ -397,8 +406,12 @@ INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, 
 INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('T3-M4', 'Astromecánico', 'T3-series', 'Duwani Mechanical Products', 'Droide astromecánico con habilidades de hackeo y reparación', 'Meetra Surik', '3956 ABY');
 INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('"Hyper" Rod', 'Protocolar', '3PO-series', 'Cybot Galactica', 'Droide de protocolo reprogramado que ahora se centra en la incivilizada tarea de eliminar a sus oponentes', null, '19 ABY');
 INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('"Quick-Draw" Quasar', 'Amalgama', '3PO-series / B1 ', 'Cybot Galactica / Baktoid Combat Automata', 'Cuerpo de un droide de protocolo y la cabeza de un robot de combate B1. Pintado con un toque de púrpura y amarillo, pone en práctica su programación estratégica.', null, '19 ABY');
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('4D-M1N', 'Protocolar', 'TDA Modificado', 'AccuTronics', 'Servía como asistente personal del Capitán Imanuel Doza en la plataforma Colossus, encargándose de escoltar a los invitados a la Torre Doza y de transmitir mensajes a los ciudadanos de la estación.', 'Capitán Doza', '27 DBY'); 
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('5-L', 'De mantenimiento', 'MSE-6', 'Industrial Automaton', 'Un droide ratón que sirve a bordo de un Destructor Estelar de la Primera Orden', null, '20 DBY');
+INSERT INTO DROIDE (DROIDE, TIPO, MODELO, FABRICANTE, DESCRIPCION, PROPIETARIO, FECHA_CREACION) VALUES ('8D8', 'Torturador', 'Torture Droid', 'Industrial Automaton', 'Un larguirucho droide de fundición, durante la época del Imperio, 8D8 ayudó a EV-9D9 a aterrorizar a los droides operativos de Jabba el Hutt.', 'Boba Fett', '25 ABY'); 
 
-DELETE FROM DROIDE;
+
+-- DELETE FROM DROIDE;
 SELECT * FROM Droide;
 
 INSERT INTO RAZA (RAZA, DESCRIPCION, PLANETA_ORIGEN, ESPERANZA_VIDA) VALUES ('Bantha', 'Gran animal herbívoro, utilizado por los habitantes de Tatooine como montura. Su cuerpo masivo es cubierto de pelaje y tiene grandes cuernos.', 'Tatooine', 50);
@@ -434,7 +447,7 @@ ORDER BY TOTAL_VELOCIDAD DESC;
 SELECT PERSONAJE, FECHA_DE_NACIMIENTO
 FROM PERSONAJE
 WHERE FECHA_DE_NACIMIENTO
-LIKE '%BBY';
+LIKE '%DBY';
 
 --5 
 SELECT PERSONAJE, ESPECIE, ALIADOS, ESTADO
